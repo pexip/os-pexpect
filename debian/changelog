@@ -1,3 +1,9 @@
+pexpect (2.3-1ubuntu2pexip1) pexip; urgency=low
+
+  * Prepare Pexip packaging
+
+ -- John-Mark Bell <jmb@pexip.com>  Wed, 25 Dec 2013 02:14:16 +0000
+
 pexpect (2.3-1ubuntu2) precise; urgency=low
 
   * Rebuild to drop python2.6 dependencies.

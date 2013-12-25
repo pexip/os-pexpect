@@ -3,10 +3,12 @@ Section: python
 Priority: optional
 Build-Depends-Indep: python-all-dev (>= 2.6.6-3~)
 Build-Depends: debhelper (>= 5.0.37.1)
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Maintainer: Pexip AS <packaging@pexip.com>
+XSBC-Pexip-Original-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Ganesan Rajagopal <rganesan@debian.org>
-Uploaders: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+XSBC-Pexip-Original-Uploaders: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
 Standards-Version: 3.8.0
+XS-Pexip-Upstream: http://archive.ubuntu.com/ubuntu/ precise
 
 Package: python-pexpect
 Architecture: all
