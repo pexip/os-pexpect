@@ -1,3 +1,50 @@
+pexpect (4.2.1-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release
+  * Removed Ganesan Rajagopal from Uploaders (Closes: #839665)
+  * Bumped debhelper compat version to 10
+  * Removed privacy breach in docs
+  * d/copyright
+    - Added copyright holders for Debian part
+    - Added new upstream copyright holder
+  * wrap-and-sort -t -a
+  * Removed version from pre-wheezy dependency
+  * Enabled autopkgtest-pkg-python testsuite
+  * Bumped required version of Python to 2.7/3.3
+
+ -- Ondřej Nový <onovy@debian.org>  Mon, 12 Dec 2016 15:59:09 +0100
+
+pexpect (4.2.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Fixed VCS URL (https)
+
+  [ Tobias Hansen ]
+  * New upstream release (Closes: #832772)
+  * Put Debian Python Modules Team into Maintainer field, the
+    package is maintained by different team members since 8 years.
+  * Add myself to Uploaders.
+  * Bump Standards-Version to 3.9.8.
+  * Bump dh compat to 9.
+  * Install without *.install files.
+  * Set http_proxy='127.0.0.1:9' for sphinx-build to prevent
+    internet access (Closes: #833860)
+
+ -- Tobias Hansen <thansen@debian.org>  Fri, 12 Aug 2016 13:44:14 +0000
+
+pexpect (4.0.1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream release (Closes: #744844)
+  * Bump standards-version to 3.9.6 (no change needed)
+  * Fix PyPI URL in debian/watch.  Thanks Lintian
+  * Build-depend on python-ptyprocess to generate the documentation
+    properly
+  * Depend on ptyprocess
+
+ -- Javi Merino <vicho@debian.org>  Fri, 06 Nov 2015 10:57:06 +0000
+
 pexpect (3.2-1) unstable; urgency=medium
 
   * Team upload.

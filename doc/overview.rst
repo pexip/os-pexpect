@@ -17,7 +17,7 @@ Here is an example of Pexpect in action::
     child.expect('ftp> ')
     child.sendline('lcd /tmp')
     child.expect('ftp> ')
-    child.sendline('cd pub')
+    child.sendline('cd pub/OpenBSD')
     child.expect('ftp> ')
     child.sendline('get README')
     child.expect('ftp> ')
@@ -60,7 +60,7 @@ Special EOF and TIMEOUT patterns
 --------------------------------
 
 There are two special patterns to match the End Of File (:class:`~pexpect.EOF`)
-or a Timeout condition (:class:`~pexpect.TIMEOUT`). You you can pass these
+or a Timeout condition (:class:`~pexpect.TIMEOUT`). You can pass these
 patterns to :meth:`~pexpect.spawn.expect`. These patterns are not regular
 expressions. Use them like predefined constants.
 
@@ -84,13 +84,13 @@ The following code fragment gives an example of this::
     # We expect any of these three patterns...
     i = child.expect (['Permission denied', 'Terminal type', '[#\$] '])
     if i==0:
-        print('Permission denied on host. Can't login')
+        print('Permission denied on host. Can\'t login')
         child.kill(0)
-    elif i==2:
+    elif i==1:
         print('Login OK... need to send terminal type.')
         child.sendline('vt100')
         child.expect('[#\$] ')
-    elif i==3:
+    elif i==2:
         print('Login OK.')
         print('Shell command prompt', child.after)
 
@@ -234,7 +234,24 @@ If you wish to read up to the end of the child's output without generating an
 The :meth:`~pexpect.spawn.expect` and :meth:`~pexpect.spawn.read` methods will
 also timeout if the child does not generate any output for a given amount of
 time. If this happens they will raise a :class:`~pexpect.TIMEOUT` exception.
-You can have these method ignore a timeout and block indefinitely by passing 
+You can have these methods ignore timeout and block indefinitely by passing
 ``None`` for the timeout parameter::
 
     child.expect(pexpect.EOF, timeout=None)
+
+.. _windows:
+
+Pexpect on Windows
+------------------
+
+.. versionadded:: 4.0
+   Windows support
+
+Pexpect can be used on Windows to wait for a pattern to be produced by a child
+process, using :class:`pexpect.popen_spawn.PopenSpawn`, or a file descriptor,
+using :class:`pexpect.fdpexpect.fdspawn`. This should be considered experimental
+for now.
+
+:class:`pexpect.spawn` and :func:`pexpect.run` are *not* available on Windows,
+as they rely on Unix pseudoterminals (ptys). Cross platform code must not use
+these.
