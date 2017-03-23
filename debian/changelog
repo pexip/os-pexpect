@@ -1,26 +1,90 @@
-pexpect (2.3-1ubuntu2pexip1) pexip; urgency=low
+pexpect (3.2-1pexip1) pexip; urgency=low
 
-  * Prepare Pexip packaging
+  * Migrate to Jessie
 
- -- John-Mark Bell <jmb@pexip.com>  Wed, 25 Dec 2013 02:14:16 +0000
+ -- John-Mark Bell <jmb@pexip.com>  Thu, 23 Mar 2017 17:01:52 +0000
 
-pexpect (2.3-1ubuntu2) precise; urgency=low
+pexpect (3.2-1) unstable; urgency=medium
 
-  * Rebuild to drop python2.6 dependencies.
+  * Team upload.
+  * New upstream release.
+  * d/control: Add explicit dh-python Build-Depends.  (Closes: 744300)
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 31 Dec 2011 02:06:40 +0000
+ -- Barry Warsaw <barry@debian.org>  Thu, 08 May 2014 16:05:58 -0400
 
-pexpect (2.3-1ubuntu1) oneiric; urgency=low
+pexpect (3.1-1) unstable; urgency=medium
 
-  * Convert to dh_python2 (Debian #616935, LP: #788514).
+  * Team upload.
+  * New upstream release
+  * debian/control: 
+    - In -doc, add breaks/replaces on python-pexcept <<3. Closes: #732915
+    - Drop python-pexcept-doc to Suggests in both other packages. 
+      Closes: #732889
+    - Bump standards-version to 3.9.5 (no changes)
 
- -- Colin Watson <cjwatson@ubuntu.com>  Mon, 27 Jun 2011 09:49:13 +0100
+ -- Jackson Doak <noskcaj@ubuntu.com>  Sun, 26 Jan 2014 11:22:03 +1100
 
-pexpect (2.3-1build1) lucid; urgency=low
+pexpect (3.0-2) unstable; urgency=low
 
-  * Rebuild dropping the extension for python2.5.
+  * Team upload.
+  * debian/copyright: Update to reflect upstreams change
+    from Expat to ISC (Closes: #731945). 
 
- -- Matthias Klose <doko@ubuntu.com>  Mon, 01 Feb 2010 22:05:55 +0000
+ -- Andrew Starr-Bochicchio <asb@debian.org>  Thu, 12 Dec 2013 16:53:35 -0500
+
+pexpect (3.0-1) unstable; urgency=low
+
+  * Team upload.
+
+  [ Thomas Kluyver ]
+  * New upstream release. Closes: #729518
+  * Add packaging for Python 3.
+  * Use pybuild for packaging.
+
+  [ Jakub Wilk ]
+  * Use canonical URIs for Vcs-* fields.
+
+  [ Jackson Doak ]
+  * Create debian/python3-pexpect.docs
+
+  [ Andrew Starr-Bochicchio ]
+  * Remove empty debian/patches dir.
+  * Move documentation and examples into a new python-pexpect-doc
+    package. They are shared between the Python 2 and Python 3 packages,
+    so there is no need to install them with both.
+
+ -- Andrew Starr-Bochicchio <asb@debian.org>  Fri, 06 Dec 2013 20:20:26 -0500
+
+pexpect (2.4-1) unstable; urgency=low
+
+  * Team upload.
+
+  [ Arthur de Jong ]
+  * New upstream release (Closes: #609195).
+  * Switch to 3.0 (quilt) source format.
+  * Switch to dh-style debian/rules.
+  * Moved packaging from python-central to dh_python2 (Closes: #616935,
+    LP: #788514).
+  * Drop Conflicts/Replaces on ancient versions which shipped in sarge.
+  * Bump standards-version to 3.9.3.
+  * Register documentation with doc-base.
+  * Update debian/copyright (license is actually MIT instead of Python 2.3).
+  * Fix syntax errors in one of the examples (closes: #580271)
+
+  [ Piotr Ożarowski ]
+  * Added Vcs-Svn and Vcs-Browser fields
+
+  [ Sandro Tosi ]
+  * debian/control
+    - uniforming Vcs-Browser field
+  * debian/control
+    - switch Vcs-Browser field to viewsvn
+
+  [ Carlos Galisteo ]
+  * debian/control
+    - Added Homepage field.
+
+ -- Arthur de Jong <adejong@debian.org>  Fri, 09 Mar 2012 11:43:41 +0100
 
 pexpect (2.3-1) unstable; urgency=low
 
@@ -115,5 +179,3 @@ pexpect (0.98-1) unstable; urgency=low
   * Initial packaging (Closes: #156784).
 
  -- Ganesan Rajagopal <rganesan@debian.org>  Wed, 13 Aug 2003 18:25:51 +0530
-
-
