@@ -1,4 +1,4 @@
-.. image:: https://travis-ci.org/pexpect/pexpect.png?branch=master
+.. image:: https://travis-ci.org/pexpect/pexpect.svg?branch=master
    :target: https://travis-ci.org/pexpect/pexpect
    :align: right
    :alt: Build status
@@ -38,7 +38,7 @@ PEXPECT LICENSE::
 
     http://opensource.org/licenses/isc-license.txt
 
-    Copyright (c) 2013-2014, Pexpect development team
+    Copyright (c) 2013-2016, Pexpect development team
     Copyright (c) 2012, Noah Spurrier <noah@noah.org>
 
     PERMISSION TO USE, COPY, MODIFY, AND/OR DISTRIBUTE THIS SOFTWARE FOR ANY

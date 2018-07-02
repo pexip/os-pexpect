@@ -1,3 +1,24 @@
+pexpect (4.6.0-1) unstable; urgency=medium
+
+  * Team upload.
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/copyright: Use https protocol in Format field
+  * d/watch: Use https protocol
+  * d/changelog: Remove trailing whitespaces
+  * d/control: Remove ancient X-Python-Version field
+  * d/control: Remove ancient X-Python3-Version field
+
+  [ Diane Trout ]
+  * New upstream release. (Closes: #890967)
+    - Upstream renamed async to _async (Closes: #902646)
+  * d/control: Update Standards-Version, no changes needed.
+  * d/rules: remove _async.py for python2.7 (Thanks: Neil Williams)
+  * d/control: Switch to python3-sphinx for documentation build
+  * Update debhelper version to 11
+
+ -- Diane Trout <diane@ghic.org>  Sun, 01 Jul 2018 19:56:20 -0700
+
 pexpect (4.2.1-1) unstable; urgency=medium
 
   * Team upload.
@@ -57,9 +78,9 @@ pexpect (3.1-1) unstable; urgency=medium
 
   * Team upload.
   * New upstream release
-  * debian/control: 
+  * debian/control:
     - In -doc, add breaks/replaces on python-pexcept <<3. Closes: #732915
-    - Drop python-pexcept-doc to Suggests in both other packages. 
+    - Drop python-pexcept-doc to Suggests in both other packages.
       Closes: #732889
     - Bump standards-version to 3.9.5 (no changes)
 
@@ -69,7 +90,7 @@ pexpect (3.0-2) unstable; urgency=low
 
   * Team upload.
   * debian/copyright: Update to reflect upstreams change
-    from Expat to ISC (Closes: #731945). 
+    from Expat to ISC (Closes: #731945).
 
  -- Andrew Starr-Bochicchio <asb@debian.org>  Thu, 12 Dec 2013 16:53:35 -0500
 

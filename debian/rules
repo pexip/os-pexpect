@@ -34,4 +34,4 @@ override_dh_install:
 	dh_install
 	# async.py is python3 only and can't be compiled for python2
 	# https://github.com/pexpect/pexpect/issues/290
-	rm $(CURDIR)/debian/python-pexpect/usr/lib/python2.7/dist-packages/pexpect/async.py
+	rm $(CURDIR)/debian/python-pexpect/usr/lib/python2.7/dist-packages/pexpect/_async.py

@@ -1,4 +1,4 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: pexpect
 Upstream-Contact: Noah Spurrier <noah@noah.org>
 Source: http://pypi.python.org/pypi/pexpect/
