@@ -1,6 +1,20 @@
+# encoding: utf-8
 from distutils.core import setup
+import os
+import re
+import sys
 
-from pexpect import __version__
+if any(a == 'bdist_wheel' for a in sys.argv):
+    from setuptools import setup
+
+with open(os.path.join(os.path.dirname(__file__), 'pexpect', '__init__.py'), 'r') as f:
+    for line in f:
+        version_match = re.search(r"__version__ = ['\"]([^'\"]*)['\"]", line)
+        if version_match:
+            version = version_match.group(1)
+            break
+    else:
+        raise Exception("couldn't find version number")
 
 long_description = """
 Pexpect is a pure Python module for spawning child applications; controlling
@@ -12,21 +26,23 @@ Pexpect can be used for automating interactive applications such as ssh, ftp,
 passwd, telnet, etc. It can be used to a automate setup scripts for duplicating
 software package installations on different servers. It can be used for
 automated software testing. Pexpect is in the spirit of Don Libes' Expect, but
-Pexpect is pure Python. Unlike other Expect-like modules for Python, Pexpect
-does not require TCL or Expect nor does it require C extensions to be compiled.
-It should work on any platform that supports the standard Python pty module.
-The Pexpect interface was designed to be easy to use.
+Pexpect is pure Python.
+
+The main features of Pexpect require the pty module in the Python standard
+library, which is only available on Unix-like systems. Some features—waiting
+for patterns from file descriptors or subprocesses—are also available on
+Windows.
 """
 
 setup (name='pexpect',
-    version=__version__,
-    py_modules=['pxssh', 'fdpexpect', 'FSM', 'screen', 'ANSI'],
+    version=version,
     packages=['pexpect'],
+    package_data={'pexpect': ['bashrc.sh']},
     description='Pexpect allows easy control of interactive console applications.',
     long_description=long_description,
     author='Noah Spurrier; Thomas Kluyver; Jeff Quast',
     author_email='noah@noah.org; thomas@kluyver.me.uk; contact@jeffquast.com',
-    url='http://pexpect.readthedocs.org/',
+    url='https://pexpect.readthedocs.io/',
     license='ISC license',
     platforms='UNIX',
     classifiers = [
@@ -38,7 +54,6 @@ setup (name='pexpect',
         'Operating System :: POSIX',
         'Operating System :: MacOS :: MacOS X',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Topic :: Software Development',
@@ -52,4 +67,5 @@ setup (name='pexpect',
         'Topic :: System :: Software Distribution',
         'Topic :: Terminals',
     ],
+    install_requires=['ptyprocess>=0.5'],
 )
