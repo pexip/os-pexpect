@@ -11,7 +11,7 @@ Vcs-Browser: http://anonscm.debian.org/viewvc/python-modules/packages/pexpect/tr
 Homepage: http://www.noah.org/wiki/Pexpect
 X-Python-Version: >= 2.6
 X-Python3-Version: >= 3.2
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ jessie
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ stretch
 
 Package: python-pexpect
 Architecture: all
