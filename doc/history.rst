@@ -4,6 +4,85 @@ History
 Releases
 --------
 
+Version 4.2.1
+`````````````
+
+* Fix to allow running ``env`` in replwrap-ed bash.
+* Raise more informative exception from pxssh if it fails to connect.
+* Change ``passmass`` example to not log passwords entered.
+
+Version 4.2
+```````````
+
+* Change: When an ``env`` parameter is specified to the :class:`~.spawn` or
+  :class:`~.run` family of calls containing a value for ``PATH``, its value is
+  used to discover the target executable from a relative path, rather than the
+  current process's environment ``PATH``.  This mirrors the behavior of
+  :func:`subprocess.Popen` in the standard library (:ghissue:`348`).
+
+* Regression: Re-introduce capability for :meth:`read_nonblocking` in class
+  :class:`fdspawn` as previously supported in version 3.3 (:ghissue:`359`).
+
+Version 4.0
+```````````
+
+* Integration with :mod:`asyncio`: passing ``async=True`` to :meth:`~.spawn.expect`,
+  :meth:`~.spawn.expect_exact` or :meth:`~.spawn.expect_list` will make them return a
+  coroutine. You can get the result using ``yield from``, or wrap it in an
+  :class:`asyncio.Task`. This allows the event loop to do other things while
+  waiting for output that matches a pattern.
+* Experimental support for Windows (with some caveats)—see :ref:`windows`.
+* Enhancement: allow method as callbacks of argument ``events`` for
+  :func:`pexpect.run` (:ghissue:`176`).
+* It is now possible to call :meth:`~.spawn.wait` multiple times, or after a process
+  is already determined to be terminated without raising an exception
+  (:ghpull:`211`).
+* New :class:`pexpect.spawn` keyword argument, ``dimensions=(rows, columns)``
+  allows setting terminal screen dimensions before launching a program
+  (:ghissue:`122`).
+* Fix regression that prevented executable, but unreadable files from
+  being found when not specified by absolute path -- such as
+  /usr/bin/sudo (:ghissue:`104`).
+* Fixed regression when executing pexpect with some prior releases of
+  the multiprocessing module where stdin has been closed (:ghissue:`86`).
+
+Backwards incompatible changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Deprecated ``pexpect.screen`` and ``pexpect.ANSI``. Please use other packages
+  such as `pyte <https://pypi.python.org/pypi/pyte>`__ to emulate a terminal.
+* Removed the independent top-level modules (``pxssh fdpexpect FSM screen ANSI``)
+  which were installed alongside Pexpect. These were moved into the Pexpect
+  package in 3.0, but the old names were left as aliases.
+* Child processes created by Pexpect no longer ignore SIGHUP by default: the
+  ``ignore_sighup`` parameter of :class:`pexpect.spawn` defaults to False. To
+  get the old behaviour, pass ``ignore_sighup=True``.
+
+Version 3.3
+```````````
+
+* Added a mechanism to wrap REPLs, or shells, in an object which can conveniently
+  be used to send commands and wait for the output (:mod:`pexpect.replwrap`).
+* Fixed issue where pexpect would attempt to execute a directory because
+  it has the 'execute' bit set (:ghissue:`37`).
+* Removed the ``pexpect.psh`` module. This was never documented, and we found
+  no evidence that people use it. The new :mod:`pexpect.replwrap` module
+  provides a more flexible alternative.
+* Fixed ``TypeError: got <type 'str'> ('\r\n') as pattern`` in :meth:`spawnu.readline`
+  method (:ghissue:`67`).
+* Fixed issue where EOF was not correctly detected in :meth:`~.interact`, causing
+  a repeating loop of output on Linux, and blocking before EOF on BSD and
+  Solaris (:ghissue:`49`).
+* Several Solaris (SmartOS) bugfixes, preventing :exc:`IOError` exceptions, especially
+  when used with cron(1) (:ghissue:`44`).
+* Added new keyword argument ``echo=True`` for :class:`spawn`.  On SVR4-like
+  systems, the method :meth:`~.isatty` will always return *False*: the child pty
+  does not appear as a terminal.  Therefore, :meth:`~.setecho`, :meth:`~.getwinsize`,
+  :meth:`~.setwinsize`, and :meth:`~.waitnoecho` are not supported on those platforms.
+
+After this, we intend to start working on a bigger refactoring of the code, to
+be released as Pexpect 4. There may be more bugfix 3.x releases, however.
+
 Version 3.2
 ```````````
 
@@ -46,7 +125,7 @@ new maintenance after a long dormancy, so some caution is warranted.
 * Ignoring ``SIGHUP`` is now optional - thanks to Kimmo Parviainen-Jalanko for
   the patch.
 
-We also now have `docs on ReadTheDocs <http://pexpect.readthedocs.org/>`_,
+We also now have `docs on ReadTheDocs <https://pexpect.readthedocs.io/>`_,
 and `continuous integration on Travis CI <https://travis-ci.org/pexpect/pexpect>`_.
 
 Version 2.4
@@ -99,11 +178,11 @@ Version 2.3
   consistently on different platforms. Solaris is the most difficult to support.
 * You can now put ``TIMEOUT`` in a list of expected patterns. This is just like
   putting ``EOF`` in the pattern list. Expecting for a ``TIMEOUT`` may not be
-  used as often as ``EOF``, but this makes Pexpect more consitent.
+  used as often as ``EOF``, but this makes Pexpect more consistent.
 * Thanks to a suggestion and sample code from Chad J. Schroeder I added the ability
   for Pexpect to operate on a file descriptor that is already open. This means that
   Pexpect can be used to control streams such as those from serial port devices. Now,
-  you just pass the integer file descriptor as the "command" when contsructing a
+  you just pass the integer file descriptor as the "command" when constructing a
   spawn open. For example on a Linux box with a modem on ttyS1::
 
       fd = os.open("/dev/ttyS1", os.O_RDWR|os.O_NONBLOCK|os.O_NOCTTY)
