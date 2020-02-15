@@ -20,7 +20,7 @@ Homepage: http://www.noah.org/wiki/Pexpect
 X-Python-Version: >= 2.7
 X-Python3-Version: >= 3.3
 Testsuite: autopkgtest-pkg-python
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ stretch
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ buster
 
 Package: python-pexpect
 Architecture: all
