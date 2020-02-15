@@ -1,10 +1,10 @@
 Metadata-Version: 1.1
 Name: pexpect
-Version: 4.2.1
+Version: 4.6.0
 Summary: Pexpect allows easy control of interactive console applications.
 Home-page: https://pexpect.readthedocs.io/
 Author: Noah Spurrier; Thomas Kluyver; Jeff Quast
-Author-email: noah@noah.org; thomas@kluyver.me.uk; contact@jeffquast.com
+Author-email: noah@noah.org, thomas@kluyver.me.uk, contact@jeffquast.com
 License: ISC license
 Description: 
         Pexpect is a pure Python module for spawning child applications; controlling
