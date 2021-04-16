@@ -1,0 +1,2 @@
+Tests: pytest
+Depends: @, python3-pytest, openssl

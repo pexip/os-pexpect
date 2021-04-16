@@ -1,3 +1,63 @@
+pexpect (4.8.0-2) unstable; urgency=medium
+
+  * Skip several flaky tests, both for build and autopkgtest (Closes: #986727)
+  * Fix broken URL in d/watch
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 16 Apr 2021 11:00:22 +0000
+
+pexpect (4.8.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Update Maintainer field with new Debian Python Team
+    contact address.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+  [ Debian Janitor ]
+  * Apply multi-arch hints.
+    + python-pexpect-doc: Add Multi-Arch: foreign.
+
+  [ Gordon Ball ]
+  * Update homepage and watch URLs to use github, as now recommended by the
+    previous homepage
+  * New upstream version 4.8.0
+  * Standards-Version 4.5.1, Debhelper compat 13, Rules-Requires-Root: no
+  * Run the testsuite at build time, and as an autopkgtest
+
+ -- Gordon Ball <gordon@chronitis.net>  Mon, 04 Jan 2021 19:51:00 +0000
+
+pexpect (4.6.0-4) unstable; urgency=medium
+
+  [ Lukas Märdian ]
+  * Switch to Sphinx logging API to fix ftbfs; Closes: #955082
+    - Apply fix from unbundled upstream package "sphinxcontrib_github_alt":
+      1f1036514578016297f5f77e706fc91b2401bcf3
+
+ -- Tobias Hansen <thansen@debian.org>  Sun, 30 Aug 2020 11:42:49 +0200
+
+pexpect (4.6.0-3) unstable; urgency=medium
+
+  * Drop python2 support; Closes: #937275
+
+ -- Sandro Tosi <morph@debian.org>  Tue, 14 Apr 2020 09:52:58 -0400
+
+pexpect (4.6.0-2) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Convert git repository from git-dpm to gbp layout
+  * Use 'python3 -m sphinx' instead of sphinx-build for building docs
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Debian Janitor ]
+  * Bump debhelper from old 10 to 12.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit.
+  * Fix day-of-week for changelog entries 0.999-4, 0.999-3, 0.999-2.
+
+  [ Sandro Tosi ]
+  * Dont run unittests for python2 binary, to reduce pytest rdeps
+
+ -- Sandro Tosi <morph@debian.org>  Mon, 13 Apr 2020 18:28:18 -0400
+
 pexpect (4.6.0-1) unstable; urgency=medium
 
   * Team upload.
@@ -15,7 +75,6 @@ pexpect (4.6.0-1) unstable; urgency=medium
   * d/control: Update Standards-Version, no changes needed.
   * d/rules: remove _async.py for python2.7 (Thanks: Neil Williams)
   * d/control: Switch to python3-sphinx for documentation build
-  * Update debhelper version to 11
 
  -- Diane Trout <diane@ghic.org>  Sun, 01 Jul 2018 19:56:20 -0700
 
@@ -203,20 +262,20 @@ pexpect (0.999-4) unstable; urgency=low
 
   * Really build pexpect for python 2.4.
 
- -- Ganesan Rajagopal <rganesan@debian.org>  Sat, 09 Jan 2005 22:15:36 +0530
+ -- Ganesan Rajagopal <rganesan@debian.org>  Sun, 09 Jan 2005 22:15:36 +0530
 
 pexpect (0.999-3) unstable; urgency=low
 
   * Build python 2.4 package.
   * python-pexpect now depends on ${python:Depends}.
 
- -- Ganesan Rajagopal <rganesan@debian.org>  Sat, 09 Jan 2005 22:10:36 +0530
+ -- Ganesan Rajagopal <rganesan@debian.org>  Sun, 09 Jan 2005 22:10:36 +0530
 
 pexpect (0.999-2) unstable; urgency=low
 
   * Build-depend on python (Closes: #258299).
 
- -- Ganesan Rajagopal <rganesan@debian.org>  Wed, 09 Jul 2004 09:45:36 +0530
+ -- Ganesan Rajagopal <rganesan@debian.org>  Fri, 09 Jul 2004 09:45:36 +0530
 
 pexpect (0.999-1) unstable; urgency=low
 
