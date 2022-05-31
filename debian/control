@@ -18,7 +18,7 @@ Vcs-Git: https://salsa.debian.org/python-team/modules/pexpect.git
 Vcs-Browser: https://salsa.debian.org/python-team/modules/pexpect
 Homepage: http://www.noah.org/wiki/Pexpect
 Testsuite: autopkgtest-pkg-python
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ buster
+XS-Pexip-Upstream: http://deb.debian.org/debian/ bullseye
 
 Package: python-pexpect
 Architecture: all
