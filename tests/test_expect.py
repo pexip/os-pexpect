@@ -38,7 +38,7 @@ from .utils import no_coverage_env
 FILTER=''.join([(len(repr(chr(x)))==3) and chr(x) or '.' for x in range(256)])
 def hex_dump(src, length=16):
     result=[]
-    for i in xrange(0, len(src), length):
+    for i in range(0, len(src), length):
        s = src[i:i+length]
        hexa = ' '.join(["%02X"%ord(x) for x in s])
        printable = s.translate(FILTER)
@@ -411,7 +411,7 @@ class ExpectTestCase (PexpectTestCase.PexpectTestCase):
     def test_before_across_chunks(self):
         # https://github.com/pexpect/pexpect/issues/478
         child = pexpect.spawn(
-            '''/bin/bash -c "openssl rand -base64 {} | head -500 | nl --number-format=rz --number-width=5 2>&1 ; echo 'PATTERN!!!'"'''.format(1024 * 1024 * 2),
+            '''/bin/bash -c "openssl rand -base64 {} 2>/dev/null | head -500 | nl --number-format=rz --number-width=5 2>&1 ; echo 'PATTERN!!!'"'''.format(1024 * 1024 * 2),
             searchwindowsize=128
         )
         child.expect(['PATTERN'])
@@ -450,6 +450,47 @@ class ExpectTestCase (PexpectTestCase.PexpectTestCase):
         # mangle the spawn so we test expect_exact() instead
         p.expect = p.expect_exact
         self._before_after(p)
+
+    def test_before_after_timeout(self):
+        '''Tests that timeouts do not truncate before, a bug in 4.4-4.7.'''
+        child = pexpect.spawn('cat', echo=False)
+        child.sendline('BEGIN')
+        for i in range(100):
+            child.sendline('foo' * 100)
+        e = child.expect([b'xyzzy', pexpect.TIMEOUT],
+                         searchwindowsize=10, timeout=0.001)
+        self.assertEqual(e, 1)
+        child.sendline('xyzzy')
+        e = child.expect([b'xyzzy', pexpect.TIMEOUT],
+                         searchwindowsize=10, timeout=30)
+        self.assertEqual(e, 0)
+        self.assertEqual(child.before[0:5], b'BEGIN')
+        child.sendeof()
+        child.expect(pexpect.EOF)
+
+    def test_increasing_searchwindowsize(self):
+        '''Tests that the search window can be expanded, a bug in 4.4-4.7.'''
+        child = pexpect.spawn('cat', echo=False)
+        child.sendline('BEGIN')
+        for i in range(100):
+            child.sendline('foo' * 100)
+        e = child.expect([b'xyzzy', pexpect.TIMEOUT],
+                         searchwindowsize=10, timeout=0.5)
+        self.assertEqual(e, 1)
+        e = child.expect([b'BEGIN', pexpect.TIMEOUT],
+                         searchwindowsize=10, timeout=0.5)
+        self.assertEqual(e, 1)
+        e = child.expect([b'BEGIN', pexpect.TIMEOUT],
+                         searchwindowsize=40000, timeout=30.0)
+        self.assertEqual(e, 0)
+        child.sendeof()
+        child.expect(pexpect.EOF)
+
+    def test_searchwindowsize(self):
+        '''Tests that we don't match outside the window, a bug in 4.4-4.7.'''
+        p = pexpect.spawn('echo foobarbazbop')
+        e = p.expect([b'bar', b'bop'], searchwindowsize=6)
+        self.assertEqual(e, 1)
 
     def _ordering(self, p):
         p.timeout = 20

@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+# used upstream to flag some tests as flaky in CI
+export TRAVIS=1
+
+# copy the tests out of the source tree to use the installed lib
+cp -r tests $AUTOPKGTEST_TMP
+cd $AUTOPKGTEST_TMP
+
+# see d/rules for comments on why these tests are skipped
+python3 -m pytest -k 'not (pxssh or replwrap or test_before_across_chunks or test_spawn_uses_env)' tests

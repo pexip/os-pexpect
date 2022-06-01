@@ -1,1 +1,3 @@
 0001-Removed-privacy-breach-in-docs.patch
+0002-Switch-to-Sphinx-logging-API.patch
+0003-tests-spawn-python3-not-python.patch

@@ -4,6 +4,40 @@ History
 Releases
 --------
 
+Version 4.8
+```````````
+
+* Returned behavior of searchwindowsize to that in 4.3 and earlier (searches
+  are only done within the search window) (:ghpull:`579`).
+* Fixed a bug truncating ``before`` attribute after a timeout (:ghpull:`579`).
+* Fixed a bug where a search could be less than ``searchwindowsize`` if it
+  was increased between calls (:ghpull:`579`).
+* Minor test cleanups to improve portability (:ghpull:`580`) (:ghpull:`581`)
+  (:ghpull:`582`) (:ghpull:`583`) (:ghpull:`584`) (:ghpull:`585`).
+* Disable chaining of timeout and EOF exceptions (:gphull:`606`).
+* Allow traceback included snippet length to be configured via
+  ``str_last_chars`` rather than always 100 (:ghpull:`598`).
+* Python 3 warning added to interact.py (:ghpull:`537`).
+* Several doc updates.
+
+Version 4.7
+```````````
+
+* The :meth:`.pxssh.login` method now no longer requires a username if an ssh
+  config is provided and will raise an error if neither are provided.
+  (:ghpull:`562`).
+* The :meth:`.pxssh.login` method now supports providing your own ``ssh``
+  command via the ``cmd`` parameter.
+  (:ghpull:`528`) (:ghpull:`563`).
+* :class:`.pxssh` now supports the ``use_poll`` parameter which is passed into :meth:`.pexpect.spawn`
+  (:ghpull:`542`).
+* Minor bug fix with ``ssh_config``.
+  (:ghpull:`498`).
+* :meth:`.replwrap.run_command` now has async support via an ``async_`` parameter.
+  (:ghpull:`501`).
+* :meth:`.pexpect.spawn` will now read additional bytes if able up to a buffer limit.
+  (:ghpull:`304`).
+
 Version 4.6
 ```````````
 
