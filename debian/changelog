@@ -1,3 +1,9 @@
+pexpect (4.8.0-2pexip1) pexip; urgency=medium
+
+  * Initial bullseye build
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Thu, 02 Jun 2022 14:42:41 +0100
+
 pexpect (4.8.0-2) unstable; urgency=medium
 
   * Skip several flaky tests, both for build and autopkgtest (Closes: #986727)
