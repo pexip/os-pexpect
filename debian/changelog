@@ -1,3 +1,21 @@
+pexpect (4.8.0-4) unstable; urgency=medium
+
+  * Team Upload.
+  * Bump Standards-Version to 4.6.2 (no changes needed)
+  * Add patch to fix FTBFS with python3.11 (Closes: #1026500)
+
+ -- Nilesh Patra <nilesh@debian.org>  Fri, 23 Dec 2022 18:40:40 +0530
+
+pexpect (4.8.0-3) unstable; urgency=medium
+
+  * Set upstream metadata fields: Repository, Repository-Browse.
+  * Remove constraints unnecessary since buster:
+    + python-pexpect-doc: Drop versioned constraint on python-pexpect in
+      Replaces.
+    + python-pexpect-doc: Drop versioned constraint on python-pexpect in Breaks.
+
+ -- Debian Janitor <janitor@jelmer.uk>  Thu, 26 May 2022 17:32:53 +0100
+
 pexpect (4.8.0-2) unstable; urgency=medium
 
   * Skip several flaky tests, both for build and autopkgtest (Closes: #986727)

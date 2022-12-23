@@ -10,7 +10,7 @@ Build-Depends: debhelper-compat (= 13),
                openssl <!nocheck>
 Maintainer: Debian Python Team <team+python@tracker.debian.org>
 Uploaders: Tobias Hansen <thansen@debian.org>,
-Standards-Version: 4.5.1
+Standards-Version: 4.6.2
 Vcs-Git: https://salsa.debian.org/python-team/packages/pexpect.git
 Vcs-Browser: https://salsa.debian.org/python-team/packages/pexpect
 Homepage: https://github.com/pexpect/pexpect
@@ -36,8 +36,6 @@ Section: doc
 Depends: ${misc:Depends},
          ${sphinxdoc:Depends},
 Built-Using: ${sphinxdoc:Built-Using}
-Breaks: python-pexpect (<< 3),
-Replaces: python-pexpect (<< 3),
 Multi-Arch: foreign
 Description: Python module for automating interactive applications (documentation)
  Pexpect is a pure Python module for spawning child applications;
