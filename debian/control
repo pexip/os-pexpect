@@ -17,7 +17,7 @@ Vcs-Browser: https://salsa.debian.org/python-team/packages/pexpect
 Homepage: https://github.com/pexpect/pexpect
 Testsuite: autopkgtest-pkg-python
 Rules-Requires-Root: no
-XS-Pexip-Upstream: http://deb.debian.org/debian/ bullseye
+XS-Pexip-Upstream: http://deb.debian.org/debian/ bookworm
 
 Package: python3-pexpect
 Architecture: all
